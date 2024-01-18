@@ -1,6 +1,7 @@
 "use client";
 
 import EventCard from "@/components/EventCard";
+import Reveal from "@/components/Reveal";
 import { useEffect, useState } from "react";
 
 export interface event {
@@ -42,7 +43,9 @@ export default function Home() {
                   <div>
                     {/* iterate through all dates in an individual event */}
                     {event.Dates.map((date, idx) => (
-                      <EventCard event={event} date={date} idx={idx} />
+                      <Reveal delay={0.2}>
+                        <EventCard event={event} date={date} idx={idx} />
+                      </Reveal>
                     ))}
                   </div>
                 );
