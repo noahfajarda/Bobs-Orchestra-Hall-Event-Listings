@@ -1,9 +1,9 @@
 "use client";
 
-import formatDateTime from "@/utils/formatDateTime";
+import EventCard from "@/components/EventCard";
 import { useEffect, useState } from "react";
 
-interface event {
+export interface event {
   Title: string;
   Type: string;
   Dates: string[];
@@ -29,36 +29,29 @@ export default function Home() {
       <div className="flex justify-center w-full">
         <h1 className="text-4xl">Bob's Orchestra Hall</h1>
       </div>
-      <div className="data-container flex flex-col gap-4">
-        {events.length > 0 ? (
-          events.map((event: event, idx) => (
-            <div key={idx} className="p-2 bg-red-100">
-              <h1 className="text-cyan-600">{event.Title}</h1>
-              <div>{event.Type}</div>
-              {event.Dates.map((dateTime: string, idx) => {
-                const { month, day, year, hours, minutes, AMPM } =
-                  formatDateTime(dateTime);
-
+      <div className="flex justify-center w-full">
+        <input type="text" placeholder="Search Events" />
+      </div>
+      <div className="flex justify-center">
+        <div className="data-container flex flex-col gap-4">
+          {events.length > 0 ? (
+            <div>
+              {/* iterate through all events */}
+              {events.map((event: event) => {
                 return (
-                  <div key={idx} className="p-2 flex gap-2">
-                    <div>
-                      {month}/{day}/{year}
-                    </div>
-
-                    <div>
-                      {hours}:{minutes} {AMPM}
-                    </div>
-                    <div>PST</div>
+                  <div>
+                    {/* iterate through all dates in an individual event */}
+                    {event.Dates.map((date, idx) => (
+                      <EventCard event={event} date={date} idx={idx} />
+                    ))}
                   </div>
                 );
               })}
-              <div>{event.Image}</div>
-              <div>{event.Description}</div>
             </div>
-          ))
-        ) : (
-          <div>Loading...</div>
-        )}
+          ) : (
+            <div>Loading...</div>
+          )}
+        </div>
       </div>
     </div>
   );
