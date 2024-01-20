@@ -27,20 +27,19 @@ export default function Home() {
 
   return (
     <div>
-      <div className="flex justify-center w-full">
-        <h1 className="text-4xl">Bob's Orchestra Hall</h1>
+      <div id="banner" className="flex justify-center items-center w-full h-40">
+        <h1 className="text-4xl sm:text-6xl text-white z-20 font-serif bg-slate-600 bg-opacity-50 p-3 rounded">
+          Bob's Orchestra Hall
+        </h1>
       </div>
-      <div className="flex justify-center w-full">
-        <input type="text" placeholder="Search Events" />
-      </div>
-      <div className="flex justify-center">
+      <div className="flex justify-center p-5">
         <div className="data-container flex flex-col gap-4">
           {events.length > 0 ? (
-            <div>
+            <div className="flex flex-col gap-2">
               {/* iterate through all events */}
               {events.map((event: event) => {
                 return (
-                  <div>
+                  <div className="flex flex-col gap-2">
                     {/* iterate through all dates in an individual event */}
                     {event.Dates.map((date, idx) => (
                       <Reveal delay={0.2}>
@@ -52,7 +51,7 @@ export default function Home() {
               })}
             </div>
           ) : (
-            <div>Loading...</div>
+            <div className="font-serif text-3xl">Loading...</div>
           )}
         </div>
       </div>

@@ -15,3 +15,8 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
+
+#banner {
+  background-image: url("/assets/images/banner.jpeg");
+  background-size: cover;
+}

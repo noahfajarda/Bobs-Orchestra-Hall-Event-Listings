@@ -1,9 +1,20 @@
 export default function formatDateTime(dateTime: string) {
+  const daysOfWeek = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
   var d = new Date(dateTime);
 
   const day = d.getDate();
   const month = d.getMonth();
   const year = d.getFullYear();
+  const dayOfWeek = daysOfWeek[d.getDay()];
 
   let hours: number = d.getUTCHours();
   let minutes: string | number = d.getUTCMinutes();
@@ -19,5 +30,5 @@ export default function formatDateTime(dateTime: string) {
     AMPM = "PM";
   }
 
-  return { month, day, year, hours, minutes, AMPM };
+  return { month, day, year, dayOfWeek, hours, minutes, AMPM };
 }
