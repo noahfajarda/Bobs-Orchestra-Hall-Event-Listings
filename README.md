@@ -4,8 +4,8 @@
 
 <div>
 <img
-src="/public/screenshots/screenshot-1.png"
-alt="image1"
+src="/public/assets/screenshots/screenshot-1.png"
+alt="screenshot-1"
 /></div>
 
 ### Summary
