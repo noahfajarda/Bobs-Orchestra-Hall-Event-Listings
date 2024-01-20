@@ -15,8 +15,9 @@ View the most recent schedule for events at Bob's Orchestra Hall!
 ### Technologies Used:
 
 - Next.js
-- Redux State
+- Redux
 - React.js
+- Tailwind
 
 ### Interacting with the application
 
