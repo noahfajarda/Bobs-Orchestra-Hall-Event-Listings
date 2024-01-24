@@ -1,6 +1,6 @@
 // set spotify API credentials
-const client_id = "50de69df8b7a4a40bc5ff107954f2d0f"; // Spotify Client_ID
-const client_secret = "93dd1392bc6a4dd0b2d3cfd92f89909c"; // Spotify Client_Secret
+const client_id = process.env.NEXT_PUBLIC_CLIENT_ID; // Spotify Client_ID
+const client_secret = process.env.NEXT_PUBLIC_CLIENT_SECRET; // Spotify Client_Secret
 
 // "retrieve ACCESS TOKEN" function
 export async function getAccessToken() {
