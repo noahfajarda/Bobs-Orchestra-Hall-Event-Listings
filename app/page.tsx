@@ -47,10 +47,10 @@ function Home() {
   );
 
   return (
-    <div className="flex h-screen md:flex-row flex-col">
-      <div className="lg:w-1/3 md:w-1/2 w-full h-full flex items-center justify-center flex-col md:relative">
-        <div className="md:fixed">
-          <div className="flex flex-col gap-20 text-white md:text-start text-center">
+    <div className="flex h-screen lg:flex-row flex-col">
+      <div className="xl:w-1/3 lg:w-1/2 w-full h-full flex items-center justify-center flex-col md:relative">
+        <div className="lg:fixed">
+          <div className="flex flex-col gap-20 text-white lg:text-start text-center">
             <div id="title">
               <Reveal delay={0.3} left={true}>
                 <h1 className="text-8xl">Bob's</h1>
@@ -66,7 +66,7 @@ function Home() {
               <div>
                 <h3>View the best of Orchestra here in Seatle, WA!</h3>
                 <h3 className="italic">All Times are PST</h3>
-                <p>Click Individual Cards to Read More</p>
+                <p>Search to Filter Out Events!</p>
               </div>
             </Reveal>
           </div>
@@ -74,7 +74,7 @@ function Home() {
       </div>
       {/* card */}
       {events.length > 0 && !error ? (
-        <div className="lg:w-2/3 md:w-1/2 w-full h-fit p-10 flex flex-wrap gap-5 justify-center">
+        <div className="xl:w-2/3 lg:w-1/2 w-full h-fit p-10 flex flex-wrap gap-5 justify-center">
           <SearchBox data={filterAndSortEvents} />
           <RenderEvents data={filterAndSortEvents} />
         </div>
