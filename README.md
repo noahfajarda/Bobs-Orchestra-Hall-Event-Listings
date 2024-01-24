@@ -19,6 +19,8 @@ View the most recent schedule for events at Bob's Orchestra Hall!
 - React.js
 - Tailwind
 - Next UI
+- Chakra UI
+- Emotion
 
 ### Interacting with the application
 

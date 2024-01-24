@@ -16,7 +16,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={quicksand.className}>{children}</body>
+      <body className={quicksand.className + " overscroll-none"}>
+        {children}
+      </body>
     </html>
   );
 }

@@ -6,6 +6,7 @@ import { Provider, useSelector } from "react-redux";
 import { selectSearch, store } from "@/utils/store";
 import SearchBox from "@/components/SearchSection";
 import RenderEvents from "@/components/RenderEvents";
+import { ChakraBaseProvider, extendTheme } from "@chakra-ui/react";
 
 export interface event {
   Title: string;
@@ -63,10 +64,15 @@ function Home() {
               </Reveal>
             </div>
             <Reveal delay={1.5}>
-              <div>
-                <h3>View the best of Orchestra here in Seatle, WA!</h3>
-                <h3 className="italic">All Times are PST</h3>
-                <p>Search to Filter Out Events!</p>
+              <div className="flex flex-col gap-4">
+                <div>
+                  <h3>View the Best of Orchestra Here in Seatle, WA!</h3>
+                  <h3 className="italic">All Times are PST</h3>
+                </div>
+                <div>
+                  <p>Search to Filter Out Events!</p>
+                  <p>Click on an Event for More Information.</p>
+                </div>
               </div>
             </Reveal>
             <Reveal delay={1.5}>
@@ -105,10 +111,22 @@ function Home() {
   );
 }
 
+const theme = extendTheme({
+  styles: {
+    global: () => ({
+      body: {
+        bg: "",
+      },
+    }),
+  },
+});
+
 export default function Page() {
   return (
     <Provider store={store}>
-      <Home />
+      <ChakraBaseProvider theme={theme}>
+        <Home />
+      </ChakraBaseProvider>
     </Provider>
   );
 }
