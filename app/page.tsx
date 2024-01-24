@@ -69,6 +69,17 @@ function Home() {
                 <p>Search to Filter Out Events!</p>
               </div>
             </Reveal>
+            <Reveal delay={1.5}>
+              <div>
+                <a
+                  href="https://github.com/noahfajarda/Bobs-Orchestra-Hall-Event-Listings"
+                  target="_blank"
+                  className="hover:text-slate-800 hover:bg-white inline rounded py-4 cursor-pointer transition-all"
+                >
+                  Project Repository 👉
+                </a>
+              </div>
+            </Reveal>
           </div>
         </div>
       </div>
