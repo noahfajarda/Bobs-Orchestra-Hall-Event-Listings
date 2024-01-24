@@ -1,6 +1,5 @@
 "use client";
 
-import EventCard from "@/components/EventCard";
 import Reveal from "@/components/Reveal";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
@@ -94,7 +93,7 @@ export default function Home() {
                         {formattedDate.toLocaleDateString("en-US")}
                       </h2>
                     </div>
-                    <p className="text-center text-xs">
+                    <p className="text-center text-sm">
                       {event.Description.slice(0, 75)}
                       {event.Description.length > 75 && "..."}
                     </p>
