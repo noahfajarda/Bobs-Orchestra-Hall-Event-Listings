@@ -18,6 +18,7 @@ View the most recent schedule for events at Bob's Orchestra Hall!
 - Redux
 - React.js
 - Tailwind
+- Next UI
 
 ### Interacting with the application
 

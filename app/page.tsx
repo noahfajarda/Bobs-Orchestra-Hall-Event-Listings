@@ -45,8 +45,6 @@ function Home() {
         .sort((a, b) => a.Title.localeCompare(b.Title)),
     [events, search]
   );
-  console.log(search);
-  console.log(filterAndSortEvents);
 
   return (
     <div className="flex h-screen md:flex-row flex-col">
@@ -69,7 +67,6 @@ function Home() {
                 <h3>View the best of Orchestra here in Seatle, WA!</h3>
                 <h3 className="italic">All Times are PST</h3>
                 <p>Click Individual Cards to Read More</p>
-                {/* <Modal /> */}
               </div>
             </Reveal>
           </div>
