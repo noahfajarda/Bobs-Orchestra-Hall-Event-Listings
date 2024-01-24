@@ -1,8 +1,11 @@
 "use client";
 
 import Reveal from "@/components/Reveal";
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useMemo, useState } from "react";
+import { Provider, useSelector } from "react-redux";
+import { selectSearch, store } from "@/utils/store";
+import SearchBox from "@/components/SearchSection";
+import RenderEvents from "@/components/RenderEvents";
 
 export interface event {
   Title: string;
@@ -12,10 +15,9 @@ export interface event {
   Description: string;
 }
 
-export default function Home() {
+function Home() {
   const [events, setEvents] = useState([]);
   const [error, setError] = useState(false);
-  let stagger = 0;
 
   useEffect(() => {
     getData();
@@ -31,6 +33,20 @@ export default function Home() {
       setError(true);
     }
   };
+
+  const search = useSelector(selectSearch);
+  const filterAndSortEvents = useMemo(
+    () =>
+      (events || [])
+        .filter((event) =>
+          event.Title.toLowerCase().includes(search.toLowerCase())
+        )
+        .slice(0, 10)
+        .sort((a, b) => a.Title.localeCompare(b.Title)),
+    [events, search]
+  );
+  console.log(search);
+  console.log(filterAndSortEvents);
 
   return (
     <div className="flex h-screen md:flex-row flex-col">
@@ -62,46 +78,8 @@ export default function Home() {
       {/* card */}
       {events.length > 0 && !error ? (
         <div className="lg:w-2/3 md:w-1/2 w-full h-fit p-10 flex flex-wrap gap-5 justify-center">
-          {events.map((event: event) => {
-            return event.Dates.map((date: string) => {
-              const formattedDate = new Date(date);
-              stagger += 0.2;
-
-              return (
-                <Reveal delay={1.7 + stagger} right={true}>
-                  <motion.button
-                    whileHover={{
-                      scale: 1.03,
-                      transition: { duration: 0.2 },
-                      boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.4)",
-                    }}
-                    whileTap={{ scale: 0.9 }}
-                    className="w-80 h-96 bg-slate-300 rounded-lg p-5 border border-4 border-solid border-gray-500"
-                  >
-                    <img
-                      src={event.Image}
-                      alt={event.Title + " thumbnail"}
-                      className="object-cover h-32 w-full rounded"
-                    />
-                    <h2 className="text-center text-2xl">{event.Title}</h2>
-                    <h2 className="text-center text-md">{event.Type}</h2>
-                    <div className="p-5">
-                      <h2 className="text-center text-md">
-                        {formattedDate.toLocaleTimeString("en-US")}
-                      </h2>
-                      <h2 className="text-center text-md">
-                        {formattedDate.toLocaleDateString("en-US")}
-                      </h2>
-                    </div>
-                    <p className="text-center text-sm">
-                      {event.Description.slice(0, 75)}
-                      {event.Description.length > 75 && "..."}
-                    </p>
-                  </motion.button>
-                </Reveal>
-              );
-            });
-          })}
+          <SearchBox data={filterAndSortEvents} />
+          <RenderEvents data={filterAndSortEvents} />
         </div>
       ) : !error ? (
         <div className="w-2/3 p-10 flex flex-wrap gap-5 justify-center">
@@ -116,5 +94,13 @@ export default function Home() {
         </div>
       )}
     </div>
+  );
+}
+
+export default function Page() {
+  return (
+    <Provider store={store}>
+      <Home />
+    </Provider>
   );
 }
