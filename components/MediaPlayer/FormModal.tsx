@@ -59,8 +59,8 @@ export default function FormModal() {
 
   return (
     <>
-      <Button onClick={onOpen} className="m-8 hover:scale-110">
-        Search
+      <Button onClick={onOpen} className="hover:scale-110">
+        Search music
       </Button>
       <Modal
         isOpen={isOpen}

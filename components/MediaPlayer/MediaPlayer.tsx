@@ -30,7 +30,6 @@ export default function FormModal() {
   const [isLoading, setIsloading] = useState(false);
 
   const [errorText, setErrorText] = useState("");
-  const { widgetId } = useContext(WidgetContext);
 
   const handleFormSubmit = async (e) => {
     try {
@@ -62,8 +61,7 @@ export default function FormModal() {
 
   return (
     <>
-      {widgetId && <SpotifyEmbed />}
-      <Button onClick={onOpen} className="m-8 hover:scale-110">
+      <Button onClick={onOpen} className="m-0 hover:scale-110">
         Search
       </Button>
       <Modal

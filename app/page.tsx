@@ -1,14 +1,15 @@
 "use client";
 
 import Reveal from "@/components/Reveal";
-import { useEffect, useMemo, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { Provider, useSelector } from "react-redux";
 import { selectSearch, store } from "@/utils/store";
 import SearchBox from "@/components/SearchSection";
 import RenderEvents from "@/components/RenderEvents";
 import { ChakraBaseProvider, extendTheme } from "@chakra-ui/react";
-import ChakraUIModal from "@/components/Modal";
 import MediaPlayer from "@/components/MediaPlayer/MediaPlayer";
+import SpotifyEmbed from "@/components/MediaPlayer/SpotifyEmbed";
+import { WidgetContext } from "@/components/MediaPlayer/WidgetContext";
 
 export interface event {
   Title: string;
@@ -19,6 +20,7 @@ export interface event {
 }
 
 function Home() {
+  const { widgetId } = useContext(WidgetContext);
   const [events, setEvents] = useState([]);
   const [error, setError] = useState(false);
 
@@ -97,6 +99,7 @@ function Home() {
       {/* card */}
       {events.length > 0 && !error ? (
         <div className="xl:w-2/3 lg:w-1/2 w-full h-fit p-10 flex flex-wrap gap-5 justify-center">
+          {widgetId && <SpotifyEmbed />}
           <SearchBox data={filterAndSortEvents} />
           <RenderEvents data={filterAndSortEvents} />
         </div>

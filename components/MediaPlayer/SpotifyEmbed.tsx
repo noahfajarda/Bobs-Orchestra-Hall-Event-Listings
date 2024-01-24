@@ -18,8 +18,8 @@ export default function SpotifyEmbed() {
           <iframe
             src={`https://embed.spotify.com/?uri=spotify:track:${widgetId}`}
             title="Spotify embed"
-            height="352px"
-            width="652px"
+            height="200px"
+            width="400px"
             style={{
               borderRadius: 20,
             }}
