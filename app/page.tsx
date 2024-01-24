@@ -7,6 +7,8 @@ import { selectSearch, store } from "@/utils/store";
 import SearchBox from "@/components/SearchSection";
 import RenderEvents from "@/components/RenderEvents";
 import { ChakraBaseProvider, extendTheme } from "@chakra-ui/react";
+import ChakraUIModal from "@/components/Modal";
+import MediaPlayer from "@/components/MediaPlayer/MediaPlayer";
 
 export interface event {
   Title: string;
@@ -85,6 +87,9 @@ function Home() {
                   Project Repository 👉
                 </a>
               </div>
+            </Reveal>
+            <Reveal delay={1.5}>
+              <MediaPlayer />
             </Reveal>
           </div>
         </div>
